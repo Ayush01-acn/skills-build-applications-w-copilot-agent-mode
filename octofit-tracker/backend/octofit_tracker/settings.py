@@ -22,13 +22,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-@6(!=w!iyp=cx!45=x$v5fd#ld1x&dzbo0wisko!m(lbpidm=4'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-# Allow all hosts
-ALLOWED_HOSTS = ['*']
+# Dynamically set ALLOWED_HOSTS for Codespace and localhost
+import os
+codespace_name = os.environ.get('CODESPACE_NAME')
+if codespace_name:
+    ALLOWED_HOSTS = [
+        f'{codespace_name}-8000.app.github.dev',
+        'localhost',
+        '127.0.0.1',
+    ]
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
