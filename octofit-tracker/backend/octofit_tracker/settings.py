@@ -89,7 +89,7 @@ DATABASES = {
             'username': '',
             'password': '',
             'authSource': '',
-            'authMechanism': '',
+            # 'authMechanism' removed to avoid ValueError
         },
     }
 }
