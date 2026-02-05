@@ -16,12 +16,32 @@ const Users = () => {
   }, []);
   return (
     <div>
-      <h2>Users</h2>
-      <ul>
-        {users.map((user, idx) => (
-          <li key={user.id || idx}>{user.name || JSON.stringify(user)}</li>
-        ))}
-      </ul>
+      <h2 className="mb-4 display-6 fw-bold text-primary">Users</h2>
+      <div className="card shadow-sm mb-4">
+        <div className="card-body">
+          <table className="table table-striped table-bordered">
+            <thead className="table-primary">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user, idx) => (
+                <tr key={user.id || idx}>
+                  <th scope="row">{user.id || idx + 1}</th>
+                  <td>{user.name || '-'}</td>
+                  <td>{user.email || '-'}</td>
+                  <td>{user.details || JSON.stringify(user)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <button className="btn btn-success mt-3" onClick={() => window.location.reload()}>Refresh</button>
+        </div>
+      </div>
     </div>
   );
 };
